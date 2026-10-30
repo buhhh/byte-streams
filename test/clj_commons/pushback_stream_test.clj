@@ -43,7 +43,7 @@
 
 (def openjdk-input-stream-default-buffer-size 16384)
 
-(deftest test-reading-closed-input-stream-exceeding-input-stream-default-buffer-size
+(deftest ^:java11 test-reading-closed-input-stream-exceeding-input-stream-default-buffer-size
   (let [c (* 2 openjdk-input-stream-default-buffer-size)
         l c
         in (byte-array (range l))
@@ -56,7 +56,7 @@
       (is (= (into [] in) (into [] r))))
     (is (= true @x))))
 
-(deftest test-reading-asynchronically-closed-input-stream-exceeding-input-stream-default-buffer-size
+(deftest ^:java11 test-reading-asynchronically-closed-input-stream-exceeding-input-stream-default-buffer-size
   (let [c (* 2 openjdk-input-stream-default-buffer-size)
         l  c
         in (byte-array (range l))
@@ -69,7 +69,7 @@
       (is (= (into [] in) (into [] r))))
     (is (= true @x))))
 
-(deftest test-reading-closed-input-stream-exceeding-input-stream-default-buffer-size-and-capacity
+(deftest ^:java11 test-reading-closed-input-stream-exceeding-input-stream-default-buffer-size-and-capacity
   (let [c (* 2 openjdk-input-stream-default-buffer-size)
         l (* 2 c)
         in (byte-array (range l))
@@ -82,7 +82,7 @@
       (is (= (into [] in) (into [] r))))
     (is (= true @x))))
 
-(deftest test-reading-asynchronically-closed-input-stream-exceeding-input-stream-default-buffer-size-and-capacity
+(deftest ^:java11 test-reading-asynchronically-closed-input-stream-exceeding-input-stream-default-buffer-size-and-capacity
   (let [c (* 2 openjdk-input-stream-default-buffer-size)
         l (* 2 c)
         in (byte-array (range l))

@@ -19,13 +19,18 @@
              :ci {:dependencies [[org.clojure/clojure "1.11.1"]
                                  [org.clojure/test.check "1.1.1"]]}}
   :test-selectors {:stress :stress
-                   :default (complement :stress)}
+                   :default (complement (some-fn :stress :java11))}
   :plugins [[jonase/eastwood "1.3.0"]
             [lein-cljfmt "0.9.0"]]
   :eastwood {:ignored-faults {:reflection {clj-commons.byte-streams.graph [{:line 122}
                                                                            {:line 123}
                                                                            {:line 124}
                                                                            {:line 125}]
+                                           ;; The method is missing in Java 8
+                                           clj-commons.pushback-stream-test [{:line 54}
+                                                                             {:line 67}
+                                                                             {:line 80}
+                                                                             {:line 93}]
                                            byte-streams.graph [{:line 127}
                                                                {:line 128}
                                                                {:line 129}
